@@ -85,11 +85,23 @@ alpha:1.0]
 }
 
 - (IBAction)photoLikeButton:(id)sender {
-    self.photoLike.image = [UIImage imageNamed:@"like-icon-filled"];
     
-    NSString *valueToSave = @"yes";
-    [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:[NSString stringWithString:self.photoLike.accessibilityIdentifier]];
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:[NSString stringWithString:self.photoLike.accessibilityIdentifier]];
+    if(savedValue != nil){
+        //photo liked earlier
+        self.photoLike.image = [UIImage imageNamed:@"like-icon"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:[NSString stringWithString:self.photoLike.accessibilityIdentifier]];
+    }
+    else{
+        self.photoLike.image = [UIImage imageNamed:@"like-icon-filled"];
+        NSString *valueToSave = @"yes";
+        [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:[NSString stringWithString:self.photoLike.accessibilityIdentifier]];
+    }
     [[NSUserDefaults standardUserDefaults] synchronize];
+
+    
+
 //    NSLog(@"%@", [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]);
 }
 @end
