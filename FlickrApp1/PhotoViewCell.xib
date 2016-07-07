@@ -35,13 +35,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#nice #bla" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udq-Z7-URV">
                                         <rect key="frame" x="0.0" y="50" width="200" height="30"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.88794070512820511" green="0.88794070512820511" blue="0.88794070512820511" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.91452323717948714" green="0.91452323717948714" blue="0.91452323717948714" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FJ3-wO-Db2" secondAttribute="trailing" id="J0F-Eb-N8l"/>
                                     <constraint firstItem="FJ3-wO-Db2" firstAttribute="width" secondItem="Udq-Z7-URV" secondAttribute="height" multiplier="20:3" id="Sq9-bR-Pj8"/>
