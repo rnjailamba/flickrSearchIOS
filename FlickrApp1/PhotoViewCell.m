@@ -45,13 +45,28 @@
     NSMutableString *tagString = [[NSMutableString alloc] init];
     NSArray *tags = [Data objectForKey:@"tags"];
     for(NSDictionary *tag in tags){
-        NSLog(@"%@",tag);
+//        NSLog(@"%@",tag);
         [tagString appendString:@"#"];
         [tagString appendString:[tag objectForKey:@"_content"]];
         [tagString appendString:@" "];
         
     }
-    self.photoTags.text = tagString;
+    
+//    self.photoTags.text = tagString;
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:tagString];
+    for(NSDictionary *tag in tags){
+        NSRange range = [tagString rangeOfString:[tag objectForKey:@"_content"]] ;
+        range.location --;
+        range.length ++;
+        if([tags indexOfObject:tag] % 2 != 0){
+            [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:range];
+        }
+        else{
+            [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:range];
+        }
+    }
+    self.photoTags.attributedText = attrString;
+
     
     //set image
     self.photoLike.accessibilityIdentifier = [Data objectForKey:@"id"];
