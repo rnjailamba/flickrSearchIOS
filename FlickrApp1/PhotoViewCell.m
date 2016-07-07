@@ -30,15 +30,30 @@
 
 - (void)configureCellWithData:(NSDictionary *)Data{
     NSLog(@"cell data %@" , Data);
+    
+    //set title and border between title and tags
     self.photoTitle.text = [Data objectForKey:@"title"];
     CALayer* layer = [self.photoTitle layer];
-    
     CALayer *bottomBorder = [CALayer layer];
     bottomBorder.borderColor = [UIColor lightGrayColor].CGColor;
     bottomBorder.borderWidth = 1;
     bottomBorder.frame = CGRectMake(-1, layer.frame.size.height-1, layer.frame.size.width, 1);
     [bottomBorder setBorderColor:[UIColor lightGrayColor].CGColor];
     [layer addSublayer:bottomBorder];    self.photoLike.image = [UIImage imageNamed:@"like-icon"];
+    
+    //set tags
+    NSMutableString *tagString = [[NSMutableString alloc] init];
+    NSArray *tags = [Data objectForKey:@"tags"];
+    for(NSDictionary *tag in tags){
+        NSLog(@"%@",tag);
+        [tagString appendString:@"#"];
+        [tagString appendString:[tag objectForKey:@"_content"]];
+        [tagString appendString:@" "];
+        
+    }
+    self.photoTags.text = tagString;
+    
+    //set image
     self.photoLike.accessibilityIdentifier = [Data objectForKey:@"id"];
     [self.photoView sd_setImageWithURL:[NSURL URLWithString:[Data objectForKey:@"image"]] placeholderImage:[UIImage imageNamed:@"defaultl_image"]];
     self.photoLike.image = [UIImage imageNamed:@"like-icon"];
