@@ -37,10 +37,6 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    NSLog(@"SETTING SIZE FOR ITEM AT INDEX %d", indexPath.row);
-//    CGSize mElementSize = CGSizeMake(145, 150);
-//    return mElementSize;
 
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
@@ -61,7 +57,6 @@
 // Layout: Set Edges
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    // return UIEdgeInsetsMake(0,8,0,8);  // top, left, bottom, right
     return UIEdgeInsetsMake(10,10,10,10);  // top, left, bottom, right
 }
 
@@ -129,6 +124,7 @@
     [manager GET:@"https://api.flickr.com/services/rest"
       parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
           _collectionData = [[NSMutableArray alloc] init];
+          [_photosView reloadData];
           id photos =[responseObject objectForKey:@"photos"];
           NSMutableArray *photosArray =[photos objectForKey:@"photo"];
           [self parseTagSearchData:photosArray];
