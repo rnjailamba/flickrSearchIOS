@@ -17,3 +17,5 @@ flickr api sample  http://stackoverflow.com/questions/27263548/afnetworking-uico
 apis https://www.flickr.com/services/api/explore/flickr.photos.getSizes
 https://www.flickr.com/services/api/explore/flickr.photos.getInfo
 
+label different text color http://stackoverflow.com/questions/19123503/nsattributedstring-change-color-at-end-of-string
+http://stackoverflow.com/questions/6501808/uilabel-with-text-of-two-different-colors
