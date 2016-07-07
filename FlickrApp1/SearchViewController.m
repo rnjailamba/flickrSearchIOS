@@ -26,7 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    _collectionData = [[NSMutableArray alloc] init];
     self.photosView.dataSource = self;
     self.photosView.delegate = self;
     
@@ -123,12 +122,13 @@
     
     NSDictionary *parameters = @{@"method":@"flickr.photos.search",
                                  @"api_key":flickrApiKey,
-                                 @"tags":@"rnjai",
+                                 @"tags":searchBar.text,
                                  @"format":@"json",
                                  @"nojsoncallback":@"1"};
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:@"https://api.flickr.com/services/rest"
       parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+          _collectionData = [[NSMutableArray alloc] init];
           id photos =[responseObject objectForKey:@"photos"];
           NSMutableArray *photosArray =[photos objectForKey:@"photo"];
           [self parseTagSearchData:photosArray];
