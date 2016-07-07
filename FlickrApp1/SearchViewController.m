@@ -50,9 +50,8 @@
     return 2.0;
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 2.0;
-}
+
+
 
 // Layout: Set Edges
 - (UIEdgeInsets)collectionView:
