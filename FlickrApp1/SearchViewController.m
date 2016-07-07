@@ -8,7 +8,9 @@
 
 #import "SearchViewController.h"
 #import "PhotoViewCell.h"
+@import AFNetworking;
 
+#define flickrApiKey @"52dfc2093a3351192be67d2de936e83b"
 @interface SearchViewController ()
 //@property (nonatomic, strong) UISearchBar *mySearchBar;
 @property (weak, nonatomic) IBOutlet UISearchBar *mySearchBar;
@@ -112,43 +114,21 @@
     self.resultDisplay.text = @"Lot of results found for";
     [searchBar resignFirstResponder];
     
-    //setup the remote server URI
-    NSString *hostServer = @"http://demo.mysamplecode.com/Servlets_JSP/";
-    NSString *myUrlString = [NSString stringWithFormat:@"%@CountrySearch",hostServer];
+//     api.flickr.com/services/rest/?method=flickr.photos.search&api_key=52dfc2093a3351192be67d2de936e83b&tags=rnjai&format=json&nojsoncallback=1&auth_token=72157667908644954-36bfea8fa0551c03&api_sig=e46668b6d684f42e510c5eb8d6a1f290
     
-    //pass the query String in the body of the HTTP post
-    NSString *body;
-    if(self.queryString){
-        body =  [NSString stringWithFormat:@"queryString=%@", self.queryString];
-    }
-    NSURL *myUrl = [NSURL URLWithString:myUrlString];
+    NSDictionary *parameters = @{@"method":@"flickr.photos.search",
+                                 @"api_key":flickrApiKey,
+                                 @"tags":@"rnjai",
+                                 @"format":@"json",
+                                 @"nojsoncallback":@"1"};
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:@"https://api.flickr.com/services/rest"
+      parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
     
-    //make the HTTP request
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:myUrl];
-    [urlRequest setTimeoutInterval:60.0f];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
-    NSData *data;
-//    [self parseResponse:data];
-    //    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    //    [NSURLConnection
-    //     sendAsynchronousRequest:urlRequest
-    //     queue:queue
-    //     completionHandler:^(NSURLResponse *response,
-    //                         NSData *data,
-    //                         NSError *error) {
-    //         //we got something in reponse to our request lets go ahead and process this
-    //         if ([data length] >0 && error == nil){
-    //
-    //
-    //         }
-    //         else if ([data length] == 0 && error == nil){
-    //             NSLog(@"Empty Response, not sure why?");
-    //         }
-    //         else if (error != nil){
-    //             NSLog(@"Not again, what is the error = %@", error);
-    //         }
-    //     }];
     
 }
 
