@@ -77,10 +77,6 @@
     [cell layoutIfNeeded];
     NSDictionary *photoDict =  [self.collectionData objectAtIndex:indexPath.row];
     [cell configureCellWithData:photoDict];
-//    NSLog(@"JSON: %@", _collectionData);
-
-    //    cell.testLabel.text = @"test";
-//    [cell setBackgroundColor:[UIColor lightGrayColor]];
     return cell;
     
 }
@@ -108,9 +104,6 @@
     //check what was passed as the query String and get rid of the keyboard
     NSLog(@"User searched for %@", searchBar.text);
     self.queryString = searchBar.text;
-//    NSMutableString *prefixString = @"Lot of results found for ";
-//    NSMutableString *finalString =[prefixString appendString:@"fdfd"];
-//    self.resultDisplay.text = @"Lot of results found for";
     [searchBar resignFirstResponder];
     
 //     api.flickr.com/services/rest/?method=flickr.photos.search&api_key=52dfc2093a3351192be67d2de936e83b&tags=rnjai&format=json&nojsoncallback=1&auth_token=72157667908644954-36bfea8fa0551c03&api_sig=e46668b6d684f42e510c5eb8d6a1f290
@@ -129,9 +122,6 @@
           NSMutableArray *photosArray =[photos objectForKey:@"photo"];
           [self parseTagSearchData:photosArray];
           self.resultDisplay.text = [NSString stringWithFormat:@"%i %@ %@",[photosArray count],@" results found for",searchBar.text];
-//          NSLog(@"JSON: %@", responseObject);
-
-//          NSLog(photos);
           
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
@@ -198,23 +188,7 @@
         
 
     }
-//    NSLog(@"Done: %@", @"done");
-
-
-
 }
 
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

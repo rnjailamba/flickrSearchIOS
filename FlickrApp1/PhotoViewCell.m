@@ -33,14 +33,12 @@
     self.photoTitle.text = [Data objectForKey:@"title"];
     self.photoLike.image = [UIImage imageNamed:@"like-icon"];
     self.photoLike.accessibilityIdentifier = [Data objectForKey:@"id"];
-    
     [self.photoView sd_setImageWithURL:[NSURL URLWithString:[Data objectForKey:@"image"]] placeholderImage:[UIImage imageNamed:@"defaultl_image"]];
-    
     self.photoLike.image = [UIImage imageNamed:@"like-icon"];
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:[NSString stringWithString:self.photoLike.accessibilityIdentifier]];
     if(savedValue != nil){
-        //photo like earlier
+        //photo liked earlier
         self.photoLike.image = [UIImage imageNamed:@"like-icon-filled"];
 
     }
@@ -53,10 +51,6 @@
     NSString *valueToSave = @"yes";
     [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:[NSString stringWithString:self.photoLike.accessibilityIdentifier]];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    NSLog(@"%@", [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]);
-
-    
-
-    
+//    NSLog(@"%@", [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]);
 }
 @end
