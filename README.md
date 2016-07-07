@@ -1,5 +1,8 @@
 # flickrSearchIOS
 Simple flickr api based app to search tags
+
+![image](http://imgur.com/IF5iMIY.gif)
+
  - Add modules using carthage - https://www.raywenderlich.com/109330/carthage-tutorial-getting-started
  - save data locally  http://stackoverflow.com/questions/307313/best-way-to-save-data-on-the-iphone
 empty code with xib http://stackoverflow.com/questions/25783282/how-to-create-an-empty-application-in-xcode-6-without-storyboard
