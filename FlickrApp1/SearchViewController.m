@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *queryString;
 @property (weak, nonatomic) IBOutlet UILabel *resultDisplay;
 @property (weak, nonatomic) IBOutlet UICollectionView *photosView;
+@property (nonatomic, strong) NSMutableArray *collectionData;
 
 @end
 
@@ -109,9 +110,9 @@
     //check what was passed as the query String and get rid of the keyboard
     NSLog(@"User searched for %@", searchBar.text);
     self.queryString = searchBar.text;
-    NSMutableString *prefixString = @"Lot of results found for ";
+//    NSMutableString *prefixString = @"Lot of results found for ";
 //    NSMutableString *finalString =[prefixString appendString:@"fdfd"];
-    self.resultDisplay.text = @"Lot of results found for";
+//    self.resultDisplay.text = @"Lot of results found for";
     [searchBar resignFirstResponder];
     
 //     api.flickr.com/services/rest/?method=flickr.photos.search&api_key=52dfc2093a3351192be67d2de936e83b&tags=rnjai&format=json&nojsoncallback=1&auth_token=72157667908644954-36bfea8fa0551c03&api_sig=e46668b6d684f42e510c5eb8d6a1f290
@@ -124,13 +125,28 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:@"https://api.flickr.com/services/rest"
       parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+          id photos =[responseObject objectForKey:@"photos"];
+          NSMutableArray *photosArray =[photos objectForKey:@"photo"];
+          [self parseTagSearchData:photosArray];
+          self.resultDisplay.text = [NSString stringWithFormat:@"%i %@ %@",[photosArray count],@" results found for",searchBar.text];
+          NSLog(@"JSON: %@", responseObject);
+
+//          NSLog(photos);
+          
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
     
     
 }
+
+//parse data
+- (void)parseTagSearchData:(NSMutableArray *)photosArray {
+    
+
+}
+
+
 
 
 /*
