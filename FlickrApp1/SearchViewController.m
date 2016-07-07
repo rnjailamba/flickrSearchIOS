@@ -26,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _collectionData = [[NSMutableArray alloc] init];
     self.photosView.dataSource = self;
     self.photosView.delegate = self;
     
@@ -182,8 +183,12 @@
 
                         }
                     }
-                    NSLog(@"JSON: %@", temp);
-                    
+                    [_collectionData addObject:temp];
+                    if([_collectionData count] == [photosArray count]){
+                        NSLog(@"JSON: %@", _collectionData);
+                        
+                    }
+
                 } failure:^(NSURLSessionTask *operation, NSError *error) {
                     NSLog(@"Error: %@", error);
                 }];
