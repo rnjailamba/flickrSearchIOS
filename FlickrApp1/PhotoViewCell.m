@@ -50,14 +50,11 @@ alpha:1.0]
     NSMutableString *tagString = [[NSMutableString alloc] init];
     NSArray *tags = [Data objectForKey:@"tags"];
     for(NSDictionary *tag in tags){
-//        NSLog(@"%@",tag);
         [tagString appendString:@"#"];
         [tagString appendString:[tag objectForKey:@"_content"]];
         [tagString appendString:@" "];
         
     }
-    
-//    self.photoTags.text = tagString;
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:tagString];
     for(NSDictionary *tag in tags){
         NSRange range = [tagString rangeOfString:[tag objectForKey:@"_content"]] ;
