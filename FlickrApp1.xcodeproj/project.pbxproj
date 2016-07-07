@@ -18,6 +18,8 @@
 		639D23971D2C131E003CE27A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639D23961D2C131E003CE27A /* Default-568h@2x.png */; };
 		639D239D1D2D36A8003CE27A /* PhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 639D239B1D2D36A8003CE27A /* PhotoViewCell.m */; };
 		639D239E1D2D36A8003CE27A /* PhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639D239C1D2D36A8003CE27A /* PhotoViewCell.xib */; };
+		639D23A11D2E4F09003CE27A /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639D239F1D2E4F09003CE27A /* AFNetworking.framework */; };
+		639D23A21D2E4F09003CE27A /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639D23A01D2E4F09003CE27A /* WebImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		639D239A1D2D36A8003CE27A /* PhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewCell.h; sourceTree = "<group>"; };
 		639D239B1D2D36A8003CE27A /* PhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewCell.m; sourceTree = "<group>"; };
 		639D239C1D2D36A8003CE27A /* PhotoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewCell.xib; sourceTree = "<group>"; };
+		639D239F1D2E4F09003CE27A /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		639D23A01D2E4F09003CE27A /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				639D23A11D2E4F09003CE27A /* AFNetworking.framework in Frameworks */,
+				639D23A21D2E4F09003CE27A /* WebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +95,8 @@
 		639D23501D2C0BC4003CE27A = {
 			isa = PBXGroup;
 			children = (
+				639D239F1D2E4F09003CE27A /* AFNetworking.framework */,
+				639D23A01D2E4F09003CE27A /* WebImage.framework */,
 				639D23961D2C131E003CE27A /* Default-568h@2x.png */,
 				639D235B1D2C0BC4003CE27A /* FlickrApp1 */,
 				639D23751D2C0BC4003CE27A /* FlickrApp1Tests */,
@@ -163,6 +171,7 @@
 				639D23551D2C0BC4003CE27A /* Sources */,
 				639D23561D2C0BC4003CE27A /* Frameworks */,
 				639D23571D2C0BC4003CE27A /* Resources */,
+				639D23A31D2E4F8B003CE27A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -278,6 +287,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		639D23A31D2E4F8B003CE27A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		639D23551D2C0BC4003CE27A /* Sources */ = {
@@ -408,6 +435,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FlickrApp1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rnjailamba.FlickrApp1;
@@ -419,6 +450,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FlickrApp1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rnjailamba.FlickrApp1;

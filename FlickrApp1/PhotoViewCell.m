@@ -7,6 +7,8 @@
 //
 
 #import "PhotoViewCell.h"
+@import WebImage;
+@import AFNetworking;
 
 @implementation PhotoViewCell
 
