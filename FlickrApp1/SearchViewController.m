@@ -129,7 +129,7 @@
           NSMutableArray *photosArray =[photos objectForKey:@"photo"];
           [self parseTagSearchData:photosArray];
           self.resultDisplay.text = [NSString stringWithFormat:@"%i %@ %@",[photosArray count],@" results found for",searchBar.text];
-          NSLog(@"JSON: %@", responseObject);
+//          NSLog(@"JSON: %@", responseObject);
 
 //          NSLog(photos);
           
@@ -143,6 +143,59 @@
 //parse data
 - (void)parseTagSearchData:(NSMutableArray *)photosArray {
     
+    for (NSDictionary *photo in photosArray) {
+        NSMutableDictionary * temp = [[NSMutableDictionary alloc]init];
+        NSString* photoId = [photo  objectForKey:@"id"];
+        NSString* photoTitle = [photo  objectForKey:@"title"];
+        temp[@"id"] = photoId;
+        temp[@"title"] = photoTitle;
+
+        //api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=52dfc2093a3351192be67d2de936e83b&photo_id=28048179706&format=json&nojsoncallback=1
+        
+        NSDictionary *parameters = @{@"method":@"flickr.photos.getInfo",
+                                     @"api_key":flickrApiKey,
+                                     @"photo_id":photoId,
+                                     @"format":@"json",
+                                     @"nojsoncallback":@"1"};
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager GET:@"https://api.flickr.com/services/rest"
+          parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+              id photos =[responseObject objectForKey:@"photo"];
+              id tagsObject =[photos objectForKey:@"tags"];
+              NSMutableArray *tagsArray =[tagsObject objectForKey:@"tag"];
+              temp[@"tags"] = tagsArray;
+              //api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=52dfc2093a3351192be67d2de936e83b&photo_id=28048179706&format=json&nojsoncallback=1
+              NSDictionary *parameters1 = @{@"method":@"flickr.photos.getSizes",
+                             @"api_key":flickrApiKey,
+                             @"photo_id":photoId,
+                             @"format":@"json",
+                             @"nojsoncallback":@"1"};
+              
+              [manager GET:@"https://api.flickr.com/services/rest"
+                parameters:parameters1 progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                    id sizes =[responseObject objectForKey:@"sizes"];
+                    NSMutableArray *sizeArray =[sizes objectForKey:@"size"];
+                    for(NSDictionary *uniqueSize in sizeArray){
+                        if([[uniqueSize objectForKey:@"label"]  isEqual: @"Small"]){
+                            temp[@"image"] = [uniqueSize objectForKey:@"source" ];
+
+                        }
+                    }
+                    NSLog(@"JSON: %@", temp);
+                    
+                } failure:^(NSURLSessionTask *operation, NSError *error) {
+                    NSLog(@"Error: %@", error);
+                }];
+          } failure:^(NSURLSessionTask *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }];
+        
+
+    }
+//    NSLog(@"Done: %@", @"done");
+
+
 
 }
 
