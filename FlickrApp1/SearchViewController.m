@@ -15,6 +15,7 @@
 //@property (nonatomic, strong) UISearchBar *mySearchBar;
 @property (weak, nonatomic) IBOutlet UISearchBar *mySearchBar;
 @property (nonatomic, strong) NSString *queryString;
+@property  UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UILabel *resultDisplay;
 @property (weak, nonatomic) IBOutlet UICollectionView *photosView;
 @property (nonatomic, strong) NSMutableArray *collectionData;
@@ -33,6 +34,9 @@
     self.mySearchBar.showsCancelButton = YES;
     
     [self.photosView registerNib:[UINib nibWithNibName:@"PhotoViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"PhotoViewCell"];
+    
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.center = CGPointMake(160, 240);
 
 }
 
@@ -106,7 +110,9 @@
     [searchBar resignFirstResponder];
     
 //     api.flickr.com/services/rest/?method=flickr.photos.search&api_key=52dfc2093a3351192be67d2de936e83b&tags=rnjai&format=json&nojsoncallback=1&auth_token=72157667908644954-36bfea8fa0551c03&api_sig=e46668b6d684f42e510c5eb8d6a1f290
-    
+    [self.photosView addSubview:self.spinner];
+    [self.spinner startAnimating];
+
     NSDictionary *parameters = @{@"method":@"flickr.photos.search",
                                  @"api_key":flickrApiKey,
                                  @"tags":searchBar.text,
@@ -117,10 +123,12 @@
       parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
           _collectionData = [[NSMutableArray alloc] init];
           [_photosView reloadData];
+          
           id photos =[responseObject objectForKey:@"photos"];
           NSMutableArray *photosArray =[photos objectForKey:@"photo"];
           [self parseTagSearchData:photosArray];
           self.resultDisplay.text = [NSString stringWithFormat:@"%i %@ %@",[photosArray count],@" results found for",searchBar.text];
+
           
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
@@ -175,7 +183,7 @@
                     if([_collectionData count] == [photosArray count]){
                         NSLog(@"collection data  complete");
                         [_photosView reloadData];
-                        
+                        [self.spinner stopAnimating];     
                     }
 
                 } failure:^(NSURLSessionTask *operation, NSError *error) {
