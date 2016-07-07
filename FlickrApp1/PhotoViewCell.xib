@@ -86,7 +86,9 @@
                 <constraint firstItem="eRP-24-tbx" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="oH3-Af-by2"/>
             </constraints>
             <connections>
+                <outlet property="photoTags" destination="Udq-Z7-URV" id="boT-20-ac7"/>
                 <outlet property="photoTitle" destination="FJ3-wO-Db2" id="xqx-e0-8d5"/>
+                <outlet property="photoView" destination="yE3-JT-hCb" id="n8A-FL-gHZ"/>
             </connections>
         </collectionViewCell>
     </objects>

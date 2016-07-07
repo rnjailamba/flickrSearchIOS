@@ -11,7 +11,10 @@
 @import AFNetworking;
 
 @interface PhotoViewCell()
+
 @property (weak, nonatomic) IBOutlet UILabel *photoTitle;
+@property (weak, nonatomic) IBOutlet UILabel *photoTags;
+@property (weak, nonatomic) IBOutlet UIImageView *photoView;
 
 @end
 
@@ -25,7 +28,7 @@
 - (void)configureCellWithData:(NSDictionary *)Data{
     NSLog(@"cell data %@" , Data);
     self.photoTitle.text = [Data objectForKey:@"title"];
-    
+    [self.photoView sd_setImageWithURL:[NSURL URLWithString:[Data objectForKey:@"image"]] placeholderImage:[UIImage imageNamed:@"defaultl_image"]];
 }
 
 @end
