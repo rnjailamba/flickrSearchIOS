@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhotoViewCell : UICollectionViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface PhotoViewCell : UICollectionViewCell
+
+-(void) configureCellWithData:(NSDictionary*)Data;
 
 @end

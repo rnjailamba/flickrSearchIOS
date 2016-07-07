@@ -74,15 +74,18 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return 10;
+    return [_collectionData count];
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     PhotoViewCell *cell = (PhotoViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoViewCell" forIndexPath:indexPath];
     [cell layoutIfNeeded];
-    
-//    cell.testLabel.text = @"test";
+    NSDictionary *photoDict =  [self.collectionData objectAtIndex:indexPath.row];
+    [cell configureCellWithData:photoDict];
+//    NSLog(@"JSON: %@", _collectionData);
+
+    //    cell.testLabel.text = @"test";
 //    [cell setBackgroundColor:[UIColor lightGrayColor]];
     return cell;
     
@@ -185,7 +188,8 @@
                     }
                     [_collectionData addObject:temp];
                     if([_collectionData count] == [photosArray count]){
-                        NSLog(@"JSON: %@", _collectionData);
+                        NSLog(@"collection data  complete");
+                        [_photosView reloadData];
                         
                     }
 

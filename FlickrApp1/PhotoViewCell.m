@@ -10,11 +10,22 @@
 @import WebImage;
 @import AFNetworking;
 
+@interface PhotoViewCell()
+@property (weak, nonatomic) IBOutlet UILabel *photoTitle;
+
+@end
+
 @implementation PhotoViewCell
 
 - (void)awakeFromNib {
     // Initialization code
     [super awakeFromNib];
+}
+
+- (void)configureCellWithData:(NSDictionary *)Data{
+    NSLog(@"cell data %@" , Data);
+    self.photoTitle.text = [Data objectForKey:@"title"];
+    
 }
 
 @end
