@@ -19,6 +19,11 @@
 - (IBAction)photoLikeButton:(id)sender;
 
 @end
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
 
 @implementation PhotoViewCell
 
@@ -59,7 +64,7 @@
         range.location --;
         range.length ++;
         if([tags indexOfObject:tag] % 2 != 0){
-            [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:range];
+            [attrString addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0x2ecc71) range:range];
         }
         else{
             [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:range];
