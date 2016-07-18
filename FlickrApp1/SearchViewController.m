@@ -10,7 +10,7 @@
 #import "PhotoViewCell.h"
 @import AFNetworking;
 
-#define flickrApiKey @"52dfc2093a3351192be67d2de936e83b"
+#define flickrApiKey @"c4c3a34c214e57691421cc95fb223013"
 @interface SearchViewController ()
 //@property (nonatomic, strong) UISearchBar *mySearchBar;
 @property (weak, nonatomic) IBOutlet UISearchBar *mySearchBar;
@@ -127,7 +127,7 @@
           id photos =[responseObject objectForKey:@"photos"];
           NSMutableArray *photosArray =[photos objectForKey:@"photo"];
           [self parseTagSearchData:photosArray];
-          self.resultDisplay.text = [NSString stringWithFormat:@"%i %@ %@",[photosArray count],@" results found for",searchBar.text];
+          self.resultDisplay.text = [NSString stringWithFormat:@"%lu %@ %@",(unsigned long)[photosArray count],@" results found for",searchBar.text];
 
           
     } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -180,11 +180,14 @@
                         }
                     }
                     [_collectionData addObject:temp];
-                    if([_collectionData count] == [photosArray count]){
-                        NSLog(@"collection data  complete");
-                        [_photosView reloadData];
-                        [self.spinner stopAnimating];
-                    }
+                    [_photosView reloadData];
+                    [self.spinner stopAnimating];
+
+//                    if([_collectionData count] == [photosArray count]){
+//                        NSLog(@"collection data  complete");
+//                        [_photosView reloadData];
+//                        [self.spinner stopAnimating];
+//                    }
 
                 } failure:^(NSURLSessionTask *operation, NSError *error) {
                     NSLog(@"Error: %@", error);

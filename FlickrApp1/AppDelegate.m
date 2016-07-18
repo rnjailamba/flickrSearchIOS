@@ -10,7 +10,7 @@
 #import "SearchViewController.h"
 
 @interface AppDelegate ()
-@property (strong) UIViewController* viewController;
+@property  UIViewController* viewController;
 
 @end
 
