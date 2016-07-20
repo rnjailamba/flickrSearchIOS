@@ -8,8 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController">
             <connections>
                 <outlet property="mySearchBar" destination="4QF-0j-aud" id="NgQ-Iz-xg1"/>
+                <outlet property="parentView" destination="T2J-gB-Y6b" id="kVl-nG-Spq"/>
+                <outlet property="parentViewTrailing" destination="OuT-RD-fwM" id="na9-YI-dpp"/>
                 <outlet property="photosView" destination="vt9-LD-Wkt" id="QDs-GW-pbx"/>
                 <outlet property="resultDisplay" destination="iZo-jJ-NRl" id="Rg3-UJ-T3b"/>
+                <outlet property="searchHeight" destination="sCk-p6-2Bi" id="NIL-Tw-RsN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,6 +24,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2J-gB-Y6b">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
+                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="4QF-0j-aud">
+                            <rect key="frame" x="0.0" y="24" width="320" height="44"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="sCk-p6-2Bi"/>
+                            </constraints>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please search above." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZo-jJ-NRl">
                             <rect key="frame" x="0.0" y="68" width="320" height="44"/>
                             <animations/>
@@ -43,40 +54,23 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
-                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="4QF-0j-aud">
-                            <rect key="frame" x="0.0" y="24" width="320" height="44"/>
-                            <animations/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="vt9-LD-Wkt" firstAttribute="top" secondItem="iZo-jJ-NRl" secondAttribute="bottom" id="0zS-p7-Hpd"/>
-                        <constraint firstItem="iZo-jJ-NRl" firstAttribute="top" secondItem="4QF-0j-aud" secondAttribute="bottom" id="0za-mw-I0Z"/>
                         <constraint firstItem="vt9-LD-Wkt" firstAttribute="leading" secondItem="T2J-gB-Y6b" secondAttribute="leading" id="4Jk-Rz-OBY"/>
-                        <constraint firstItem="vt9-LD-Wkt" firstAttribute="leading" secondItem="T2J-gB-Y6b" secondAttribute="leading" id="5QS-Nk-M8I"/>
-                        <constraint firstAttribute="trailing" secondItem="vt9-LD-Wkt" secondAttribute="trailing" id="8Lx-q2-gCg"/>
                         <constraint firstItem="vt9-LD-Wkt" firstAttribute="top" secondItem="iZo-jJ-NRl" secondAttribute="bottom" id="9Vw-kF-3sS"/>
                         <constraint firstAttribute="trailing" secondItem="vt9-LD-Wkt" secondAttribute="trailing" id="9uq-mJ-BUf"/>
-                        <constraint firstItem="vt9-LD-Wkt" firstAttribute="top" secondItem="iZo-jJ-NRl" secondAttribute="bottom" id="IcT-Sf-Fuh"/>
                         <constraint firstAttribute="bottom" secondItem="vt9-LD-Wkt" secondAttribute="bottom" id="Ige-IG-3tI"/>
                         <constraint firstItem="vt9-LD-Wkt" firstAttribute="centerX" secondItem="T2J-gB-Y6b" secondAttribute="centerX" id="JYl-s1-l6N"/>
-                        <constraint firstItem="iZo-jJ-NRl" firstAttribute="top" secondItem="4QF-0j-aud" secondAttribute="bottom" id="ROX-dW-4nO"/>
                         <constraint firstItem="4QF-0j-aud" firstAttribute="centerX" secondItem="T2J-gB-Y6b" secondAttribute="centerX" id="Rzy-rf-vMd"/>
                         <constraint firstItem="4QF-0j-aud" firstAttribute="leading" secondItem="T2J-gB-Y6b" secondAttribute="leading" id="ZmN-aC-zlb"/>
                         <constraint firstItem="4QF-0j-aud" firstAttribute="top" secondItem="T2J-gB-Y6b" secondAttribute="top" constant="24" id="aQP-z6-1Be"/>
-                        <constraint firstItem="vt9-LD-Wkt" firstAttribute="top" secondItem="iZo-jJ-NRl" secondAttribute="bottom" id="gv8-Vf-Nfx"/>
                         <constraint firstItem="iZo-jJ-NRl" firstAttribute="top" secondItem="4QF-0j-aud" secondAttribute="bottom" id="gzo-hL-OXe"/>
                         <constraint firstItem="vt9-LD-Wkt" firstAttribute="leading" secondItem="T2J-gB-Y6b" secondAttribute="leading" id="hvV-ir-bSL"/>
-                        <constraint firstItem="iZo-jJ-NRl" firstAttribute="leading" secondItem="T2J-gB-Y6b" secondAttribute="leading" id="i2e-va-vWg"/>
-                        <constraint firstAttribute="bottom" secondItem="vt9-LD-Wkt" secondAttribute="bottom" id="jF9-jo-sgp"/>
                         <constraint firstAttribute="trailing" secondItem="4QF-0j-aud" secondAttribute="trailing" id="ky8-DP-r8h"/>
-                        <constraint firstAttribute="trailing" secondItem="iZo-jJ-NRl" secondAttribute="trailing" id="mw8-CL-ix2"/>
                         <constraint firstAttribute="trailing" secondItem="iZo-jJ-NRl" secondAttribute="trailing" id="w5u-Cn-Rz7"/>
                         <constraint firstItem="iZo-jJ-NRl" firstAttribute="leading" secondItem="T2J-gB-Y6b" secondAttribute="leading" id="xjO-I5-5Qi"/>
-                        <constraint firstItem="vt9-LD-Wkt" firstAttribute="top" secondItem="iZo-jJ-NRl" secondAttribute="bottom" id="zeG-mF-DgW"/>
-                        <constraint firstAttribute="bottom" secondItem="vt9-LD-Wkt" secondAttribute="bottom" id="zgF-Of-SjF"/>
                         <constraint firstItem="iZo-jJ-NRl" firstAttribute="centerX" secondItem="T2J-gB-Y6b" secondAttribute="centerX" id="zlB-9y-rFI"/>
                     </constraints>
                 </view>
@@ -84,13 +78,12 @@
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="T2J-gB-Y6b" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="HbD-tk-NcI"/>
-                <constraint firstAttribute="bottom" secondItem="T2J-gB-Y6b" secondAttribute="bottom" id="eEj-PT-9u8"/>
-                <constraint firstItem="T2J-gB-Y6b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kBC-wV-Baz"/>
-                <constraint firstItem="T2J-gB-Y6b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kEh-LQ-de8"/>
-                <constraint firstItem="T2J-gB-Y6b" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="lYg-EZ-V62"/>
-                <constraint firstAttribute="trailing" secondItem="T2J-gB-Y6b" secondAttribute="trailing" id="ptu-gb-Ufm"/>
+                <constraint firstItem="T2J-gB-Y6b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="55v-7F-HTu"/>
+                <constraint firstAttribute="bottom" secondItem="T2J-gB-Y6b" secondAttribute="bottom" id="IYj-1l-SNo"/>
+                <constraint firstAttribute="trailing" secondItem="T2J-gB-Y6b" secondAttribute="trailing" id="OuT-RD-fwM"/>
+                <constraint firstItem="T2J-gB-Y6b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yrl-LF-NVh"/>
             </constraints>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>

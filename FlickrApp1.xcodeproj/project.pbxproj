@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63961A6F1D3F659000965592 /* SideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63961A6E1D3F659000965592 /* SideView.xib */; };
 		639D235E1D2C0BC4003CE27A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 639D235D1D2C0BC4003CE27A /* main.m */; };
 		639D23611D2C0BC4003CE27A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 639D23601D2C0BC4003CE27A /* AppDelegate.m */; };
 		639D23641D2C0BC4003CE27A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639D23631D2C0BC4003CE27A /* ViewController.m */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63961A6E1D3F659000965592 /* SideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideView.xib; sourceTree = "<group>"; };
 		639D23591D2C0BC4003CE27A /* FlickrApp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrApp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		639D235D1D2C0BC4003CE27A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		639D235F1D2C0BC4003CE27A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				639D238F1D2C0C41003CE27A /* SearchViewController.h */,
 				639D23901D2C0C41003CE27A /* SearchViewController.m */,
 				639D23911D2C0C41003CE27A /* SearchViewController.xib */,
+				63961A6E1D3F659000965592 /* SideView.xib */,
 				639D239A1D2D36A8003CE27A /* PhotoViewCell.h */,
 				639D239B1D2D36A8003CE27A /* PhotoViewCell.m */,
 				639D239C1D2D36A8003CE27A /* PhotoViewCell.xib */,
@@ -267,6 +270,7 @@
 			files = (
 				639D23931D2C0C41003CE27A /* SearchViewController.xib in Resources */,
 				639D239E1D2D36A8003CE27A /* PhotoViewCell.xib in Resources */,
+				63961A6F1D3F659000965592 /* SideView.xib in Resources */,
 				639D23691D2C0BC4003CE27A /* Assets.xcassets in Resources */,
 				639D23971D2C131E003CE27A /* Default-568h@2x.png in Resources */,
 			);
@@ -443,6 +447,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rnjailamba.FlickrApp1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -458,6 +463,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rnjailamba.FlickrApp1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -528,6 +534,7 @@
 				639D23881D2C0BC4003CE27A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		639D23891D2C0BC4003CE27A /* Build configuration list for PBXNativeTarget "FlickrApp1Tests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +543,7 @@
 				639D238B1D2C0BC4003CE27A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		639D238C1D2C0BC4003CE27A /* Build configuration list for PBXNativeTarget "FlickrApp1UITests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +552,7 @@
 				639D238E1D2C0BC4003CE27A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

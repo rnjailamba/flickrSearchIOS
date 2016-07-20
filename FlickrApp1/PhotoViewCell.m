@@ -73,12 +73,12 @@ alpha:1.0]
     //set image
     self.photoLike.accessibilityIdentifier = [Data objectForKey:@"id"];
     [self.photoView sd_setImageWithURL:[NSURL URLWithString:[Data objectForKey:@"image"]] placeholderImage:[UIImage imageNamed:@"defaultl_image"]];
-    self.photoLike.image = [UIImage imageNamed:@"like-icon"];
+    self.photoLike.image = [UIImage imageNamed:@"like-icon1"];
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:[NSString stringWithString:self.photoLike.accessibilityIdentifier]];
     if(savedValue != nil){
         //photo liked earlier
-        self.photoLike.image = [UIImage imageNamed:@"like-icon-filled"];
+        self.photoLike.image = [UIImage imageNamed:@"like-icon-filled1"];
 
     }
     
@@ -90,11 +90,11 @@ alpha:1.0]
                             stringForKey:[NSString stringWithString:self.photoLike.accessibilityIdentifier]];
     if(savedValue != nil){
         //photo liked earlier
-        self.photoLike.image = [UIImage imageNamed:@"like-icon"];
+        self.photoLike.image = [UIImage imageNamed:@"like-icon1"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:[NSString stringWithString:self.photoLike.accessibilityIdentifier]];
     }
     else{
-        self.photoLike.image = [UIImage imageNamed:@"like-icon-filled"];
+        self.photoLike.image = [UIImage imageNamed:@"like-icon-filled1"];
         NSString *valueToSave = @"yes";
         [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:[NSString stringWithString:self.photoLike.accessibilityIdentifier]];
     }
